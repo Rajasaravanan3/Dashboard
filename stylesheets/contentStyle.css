@@ -1,0 +1,266 @@
+#lapcontent{
+    background-color: #f3f7fb; 
+    overflow-y: scroll;  
+    padding:0px; 
+    height: 100vh;
+    position: sticky;
+    top: 70px;
+}
+.page{
+    padding: 0px 30px;
+    height: 100%;
+}
+.home-dashboard-row{
+    padding-top:15px;
+}
+.home-l{
+    padding: 20px;
+    display: inline-flex; 
+    align-items: center;
+}
+.home-icon{
+    margin-right:20px;
+}
+.home-icon-div{
+    padding: 5px 5px 5px 0px; 
+    background-color: #4099ff; 
+    border-radius: 5px;
+}
+#houseIconLarge{
+    color:#ffffff;
+}
+#dashboardText{
+    margin: 0px; 
+    font-weight: 400;
+}
+#contentCardText{
+    font-size: 13px;
+}
+.home-link{
+    float:right;
+}
+#home_rDashboardText{
+    text-decoration: none; 
+    color: #110e0f; 
+    padding-left: 8px;
+}
+#chartColumn{
+    margin-bottom: 20px;
+}
+#chartWrapDiv{
+    background-color: #ffffff; 
+    padding: 20px;
+    border-radius: 5px; 
+    box-shadow: 0 4px 7px 0 rgba(0, 0, 0, 0.2);
+}
+.title-card-text{
+    font-size: 15px;
+}
+.title-card-line{
+    width: 10%;
+    margin:15px 0px 0px 0px;
+}
+.impressions, .goal, .impact{
+    background-color: #ffffff;
+    padding: 20px; 
+    border-radius: 5px;
+    box-shadow: 0 4px 7px 0 rgba(0, 0, 0, 0.2);
+}
+.impressions, .goal{
+    margin-bottom: 40px; 
+}
+#imapactHandDiv, #goalIconDiv, #impressionsIconDiv{
+    display: flex; 
+    align-items: center;
+}
+#impactHandIcon, #goalIcon, #impressionsIcon{
+    display:flex; 
+    align-items: center; 
+    justify-content: center; 
+    border-radius:5px; 
+    height: 50px; 
+    width: 50px; 
+    color: #ffffff;
+}
+#impactHandIcon{  
+    background-color: #ffb64d; 
+}
+#goalIcon{
+    background-color: #2ed8b6;
+}
+#impressionsIcon{
+    background-color: #4099ff;
+}
+.impressions:hover #impressionsIcon{
+    border-radius:50%; 
+}
+.three-div-text{
+    margin-bottom: 25px; 
+    color: #33336e;
+}
+.three-div-count{
+    margin-bottom: 8px;
+}
+.three-div-duration{
+    margin-bottom: 0px; color: #33336e;
+}
+#impressionsCount{
+    color: #4099ff;
+}
+#goalCount{
+    color: #2ed8b6;
+}
+#impactCount{
+    color: #ffb64d;
+}
+#taskRow{
+    margin: 20px 0px 30px 0px; 
+    background-color: #ffffff; 
+    border-radius: 5px; 
+    box-shadow: 0 4px 7px 0 rgba(0, 0, 0, 0.2);
+}
+.published, .completed, .successfull, .ongoing{
+    padding: 20px;
+}
+.published-count, .completed-count, .success-count, .ongoing-count{
+    margin-bottom: 30px;
+}
+#publishedProgress{
+    background-color: #ff5370; 
+    width: 25%
+} 
+#completedProgress{
+    background-color: #4099ff; 
+    width: 65%;
+} 
+#successfullProgress{
+    background-color: #2ed8b6; 
+    width: 85%;
+} 
+#ongoingProgress{
+    background-color: #ffb64d; 
+    width: 45%;
+}
+.published-count-percentage, .success-count-percentage, .ongoing-count-percentage{
+    margin-left: 10px;
+    color: #2ed8b6;
+}
+.completed-count-percentage{
+    margin-left: 10px;
+    color: #ff5370;
+}
+.sales-div{
+    background-color: #5897f7; 
+    padding: 20px; 
+    border-radius: 5px; 
+    margin-bottom:30px; 
+    box-shadow: 0 4px 7px 0 rgba(0, 0, 0, 0.2);
+}
+.sales-card-amount{
+    color: #f9faff; 
+    margin-bottom: 0px;
+}
+.sales-card-type{
+    color: #f9faff; 
+    margin-bottom: 5px;
+}
+#julySales{
+    font-weight: 500;
+}
+#salesChartDiv{
+    height: 300px;
+}
+#amchartdiv{
+    height: 100%;
+    width: 100%;
+}
+.whats-div, .activity-div{
+    background-color: #ffffff; 
+    padding: 20px; 
+    border-radius: 5px; 
+    margin-bottom:30px; 
+    box-shadow: 0 4px 7px 0 rgba(0, 0, 0, 0.2);
+}
+.whats-new-header, .latest-activity-header, .table-header{
+    position: relative;
+}
+.chevron-left-div{
+    position: absolute;
+    top: 0px;
+    right: -10px;
+}
+.whats-new-title-line, .activity-title-line{
+    width: 22%;
+    margin:15px 0px 0px 0px;
+}
+.whatsnew-content, .latest-activity-content{
+    overflow-y:scroll; 
+    overflow-x:hidden; 
+    height: 320px;
+}
+#whatsnewcontentRow_1{
+    padding-top: 20px;
+    padding-bottom: 15px;
+}
+.fa-user-tie{
+    color: #4099ff;
+}
+.fa-circle-check{
+    color: #2ed8b6;
+}
+.fa-briefcase{
+    color: #ff5370;
+}
+#whatsnewcontentRow_2{
+    padding-bottom: 15px;
+}
+.activity-row{
+    padding-bottom: 15px;
+}
+#activityRow_1{
+    padding-top: 20px;
+}
+.fa-circleBlue{
+    color: #87bfff;
+}
+.fa-circleGreen{
+    color: #2ed8b6;
+}
+.fa-circleRed{
+    color: #ff5370;
+}
+.activityMoreText{
+    text-decoration: none;
+}
+#tableRow{
+    padding-bottom: 100px;
+}
+.products-table{
+    margin:10px; 
+    padding: 20px; 
+    border-radius: 5px; 
+    background-color: #ffffff; 
+    box-shadow: 0 4px 7px 0 rgba(0, 0, 0, 0.2);
+    overflow-x: scroll;
+}
+.table-title-line{
+    width: 5%;
+    margin:15px 0px 0px 0px;
+}
+.text-light{
+    border-radius: 5px; 
+    padding: 5px; 
+    font-size: 12px; 
+    color: #e9c7ef;
+}
+.yellow-star{
+    color: #ffb64d;
+}
+.grey-star{
+    color: #d6d6d6;
+}
+@media screen and (max-width: 450px) {
+    .page{
+        padding: 0px 20px;
+    }
+}

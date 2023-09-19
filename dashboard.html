@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admindek | Admin Template</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- chart resources -->
+    <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
+    <script src="https://cdn.amcharts.com/lib/5/xy.js"></script>
+    <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
+
+    <link rel="stylesheet" href="./stylesheets/dashboard.css">
+    <link rel="stylesheet" href="./stylesheets/contentStyle.css">
+    <!-- <script src="script.js"></script> -->
+</head>
+<body>
+    <div class="container-fluid">
+        
+
+        <!-- hearder-start -->
+        <div class="row header-row">
+            <div class="col-md-12 col-lg-2 header-logo-column">
+                <div class="one-check form-check form-switch form-check-reverse pt-2 pb-2">
+                    <input class="form-check-input" type="checkbox" id="mobileradio" onclick="openmenu()">
+                </div>
+                <h3 class="pt-2 header-page-name">ADMINDEK</h3>
+                <div class="form-check form-switch form-check-reverse pt-2 pb-2 two">
+                    <input class="form-check-input" id="toggleInput" type="checkbox" id="flexSwitchCheckReverse" onclick="lapnav()" checked>
+                </div>
+                <div class="three" onclick="check()">
+                    <i class="fa-solid fa-bars"></i>
+                </div>
+            </div>
+ 
+            <div class="col-md-0 col-lg-10 option header-icons-column" id="check">
+                <div class="header-left-icons header-icons">
+                    <div class="icon-div search-icon-div"><img class="icons" src="./icons/search.svg" alt="search"></div>
+                    <div class="icon-div"><img class="icons" src="./icons/maximize.svg" alt=""></div>
+                </div>
+                <div class="header-right-icons header-icons">
+                    <div class="header-icons bell-square-div">
+                        <div class="icon-div"><img class="icons" src="./icons/bell.svg" alt="notification"></div>
+                        <div class="icon-div"><img class="icons" src="./icons/message-square.svg" alt="message-square"></div>
+                    </div>
+                    <div class="header-icons">
+                        <div><img class="profile" src="./icons/avatar-boy.webp" alt="profile"></div>
+                        <div class="profile-name-div"><span class="profile-name">John Snow</span></div>
+                        <div class="arrow"><img id="profileChevronDown" src="./icons/chevron-down.svg" alt="chevron-down"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- header-end -->
+
+
+        <!-- body-start -->
+
+        <div class="row lapview sidebar-row">
+
+            <!-- sidebar start -->
+            <div class="col-lg-2 col-md-0 navbar" id="lapnavbar">
+                <div class="sidebar-content">
+                    <div class="nav-titles">
+                        <div class="navigation title-text">Navigation</div>
+                        <ul class="nav-list">
+                            <div class="dashboard-div">
+                                <div class="nav-list-header-div" id="dashboardSidebarHeader">
+                                    <svg class="nav-list-icons" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24"><path fill="white" d="m12 1.198l10 8.334V22H2V9.532l10-8.334ZM10 20h4v-5h-4v5Zm6 0h4v-9.532l-8-6.666l-8 6.666V20h4v-7h8v7Z"/></svg>
+                                    <span class="nav-span">Dashboard</span>
+                                    <i class="fa-solid fa-chevron-down fa-2xs chevron-down-i"></i>
+                                </div>
+                                <div class="DashboardDropdown dropdown-list" id="DashboardDropdown">
+                                    <li><a href="#"><i class="fa-solid fa-chevron-right fa-2xs"></i>Default</a></li>
+                                    <li><a href="#"><i class="fa-solid fa-chevron-right fa-2xs"></i>CRM</a></li>
+                                    <li><a href="#"><i class="fa-solid fa-chevron-right fa-2xs"></i>Analytics</a></li>
+                                </div>
+                            </div>
+                        </ul>
+                        <ul class="nav-list">
+                            <div>
+                                <div class="nav-list-header-div">
+                                    <svg class="nav-list-icons" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24"><path fill="currentColor" d="M21 3a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h18ZM7 5H4v14h3V5Zm13 0H9v14h11V5Z"/></svg>
+                                    <span class="nav-span">Page layouts</span>
+                                    <i class="fa-solid fa-chevron-right fa-2xs chevron-down-i"></i>
+                                </div>
+                                <div class="pageLayoutsDropdown dropdown-list">
+                                    <li>
+                                        <a href="#"><i class="fa-solid fa-chevron-right fa-2xs"></i>Vertical</a>
+                                    </li>
+                                    <li><a href="#"><i class="fa-solid fa-chevron-right fa-2xs"></i>Horizontal</a></li>
+                                    <li><a href="#"><i class="fa-solid fa-chevron-right fa-2xs"></i>Bottom Menu</a></li>
+                                </div>
+                            </div>
+                        </ul>
+                        <ul class="nav-list">
+                            <div>
+                                <div class="nav-list-header-div">
+                                    <svg class="nav-list-icons" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 512 512"><path fill="white" d="M64 384h384v-42.67H64Zm0-106.67h384v-42.66H64ZM64 128v42.67h384V128Z"/></svg>
+                                    <span class="nav-span">Navigation</span>
+                                </div>
+                            </div>
+                        </ul>
+                        <ul class="nav-list">
+                            <div>
+                                <div class="nav-list-header-div">
+                                    <svg class="nav-list-icons" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24"><g fill="none" stroke="white" stroke-linejoin="round" stroke-width="2"><path d="m4 8l8-4l8 4l-8 4l-8-4z"/><path stroke-linecap="round" d="m4 12l8 4l8-4M4 16l8 4l8-4"/></g></svg>
+                                    <span class="nav-span">Widget</span>
+                                    <i class="fa-solid fa-chevron-right fa-2xs chevron-down-i"></i>
+                                </div>
+                                <div class="widgetDropdown dropdown-list">
+                                    <li><a href="#"><i class="fa-solid fa-chevron-right fa-2xs"></i>Statistic</a></li>
+                                    <li><a href="#"><i class="fa-solid fa-chevron-right fa-2xs"></i>Data</a></li>
+                                    <li><a  href="#"><i class="fa-solid fa-chevron-right fa-2xs"></i>Chart Widget</a></li>
+                                </div>
+                            </div>
+                        </ul>
+                    </div>
+                    <div class="UIElementDiv nav-titles">
+                        <div class="UIElement title-text">UI Element</div>
+                        <ul class="nav-list">
+                            <div>
+                                <div class="nav-list-header-div">
+                                    <svg class="nav-list-icons" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24"><g fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7l8.7 5l8.7-5M12 22V12"/></g></svg>
+                                    <span class="nav-span">Basic</span>
+                                    <i class="fa-solid fa-chevron-right fa-2xs chevron-down-i"></i>
+                                </div>
+                                <div class="basicDropdown dropdown-list">
+                                    <li><a href="#"><i class="fa-solid fa-chevron-right fa-2xs"></i>Alert</a></li>
+                                    <li><a href="#"><i class="fa-solid fa-chevron-right fa-2xs"></i>Breadcrumbs</a></li>
+                                    <li><a  href="#"><i class="fa-solid fa-chevron-right fa-2xs"></i>Button</a></li>
+                                    <li><a href="#"><i class="fa-solid fa-chevron-right fa-2xs"></i>Box-Shadow</a></li>
+                                    <li><a href="#"><i class="fa-solid fa-chevron-right fa-2xs"></i>Accordion</a></li>
+                                    <li><a  href="#"><i class="fa-solid fa-chevron-right fa-2xs"></i>Generic Class</a></li>
+                                    <li><a href="#"><i class="fa-solid fa-chevron-right fa-2xs"></i>Tabs</a></li>
+                                    <li><a href="#"><i class="fa-solid fa-chevron-right fa-2xs"></i>Color</a></li>
+                                    <li><a  href="#"><i class="fa-solid fa-chevron-right fa-2xs"></i>Label Badge</a></li>
+                                    <li><a href="#"><i class="fa-solid fa-chevron-right fa-2xs"></i>Progress Bar</a></li>
+                                    <li><a href="#"><i class="fa-solid fa-chevron-right fa-2xs"></i>List</a></li>
+                                    <li><a  href="#"><i class="fa-solid fa-chevron-right fa-2xs"></i>Tooltip And popover</a></li>
+                                    <li><a href="#"><i class="fa-solid fa-chevron-right fa-2xs"></i>Typography</a></li>
+                                    <li><a href="#"><i class="fa-solid fa-chevron-right fa-2xs"></i>Other</a></li>
+                                </div>
+                            </div>
+                        </ul>
+                        <ul class="nav-list">
+                            <div>
+                                <div class="nav-list-header-div">
+                                    <svg class="nav-list-icons" xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 15 15"><path fill="none" stroke="white" stroke-linejoin="round" d="m.5 8.5l7 6l7-6l-2-8l-2 6h-6l-2-6l-2 8Z"/></svg>
+                                    <span class="nav-span">Advance</span>
+                                    <i class="fa-solid fa-chevron-right fa-2xs chevron-down-i"></i>
+                                </div>
+                                <div class="advanceDropdown dropdown-list">
+                                    <li><a href="#"><i class="fa-solid fa-chevron-right fa-2xs"></i>Draggable</a></li>
+                                    <li><a href="#"><i class="fa-solid fa-chevron-right fa-2xs"></i>Modal</a></li>
+                                    <li><a  href="#"><i class="fa-solid fa-chevron-right fa-2xs"></i>Notification</a></li>
+                                    <li><a href="#"><i class="fa-solid fa-chevron-right fa-2xs"></i>Rating</a></li>
+                                    <li><a href="#"><i class="fa-solid fa-chevron-right fa-2xs"></i>Range Slider</a></li>
+                                    <li><a  href="#"><i class="fa-solid fa-chevron-right fa-2xs"></i>Slider</a></li>
+                                    <li><a href="#"><i class="fa-solid fa-chevron-right fa-2xs"></i>Syntax Highlighter</a></li>
+                                    <li><a href="#"><i class="fa-solid fa-chevron-right fa-2xs"></i>Tour</a></li>
+                                    <li><a  href="#"><i class="fa-solid fa-chevron-right fa-2xs"></i>Tree View</a></li>
+                                    <li><a href="#"><i class="fa-solid fa-chevron-right fa-2xs"></i>Nestable</a></li>
+                                    <li><a href="#"><i class="fa-solid fa-chevron-right fa-2xs"></i>Toolbar</a></li>
+                                </div>
+                            </div>
+                        </ul>
+                        <ul class="nav-list">
+                            <div>
+                                <div class="nav-list-header-div">
+                                    <svg class="nav-list-icons" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24"><g fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="m7.5 4.27l9 5.15M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7l8.7 5l8.7-5M12 22V12"/></g></svg>
+                                    <span class="nav-span">Extra</span>
+                                    <i class="fa-solid fa-chevron-right fa-2xs chevron-down-i"></i>
+                                </div>
+                                <div class="extraDropdown dropdown-list">
+                                    <li><a href="#"><i class="fa-solid fa-chevron-right fa-2xs"></i>Session Timeout</a></li>
+                                    <li><a href="#"><i class="fa-solid fa-chevron-right fa-2xs"></i>Session Idle Timeout</a></li>
+                                    <li><a href="#"><i class="fa-solid fa-chevron-right fa-2xs"></i>Offline</a></li>
+                                </div>
+                            </div>
+                        </ul>
+                        <ul class="nav-list">
+                            <div>
+                                <div class="nav-list-header-div">
+                                    <svg class="nav-list-icons" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="-2 -2 24 24"><path fill="white" d="m8.164 11.107l1.817 1.049l1.87-1.08V9.01L9.96 7.92L8.164 9.042v2.065zm-2-1.155V2.978a8.02 8.02 0 0 0-3.839 4.758l3.84 2.216zm-4.163-.094L2 10a7.97 7.97 0 0 0 2.19 5.499l3.79-2.189l-5.979-3.452zm6.163-3.174l5.808-3.63A7.963 7.963 0 0 0 10 2c-.632 0-1.246.073-1.836.212v4.472zm7.503-2.33l-3.786 2.365l6.115 3.531a7.975 7.975 0 0 0-2.329-5.897zm-1.816 5.812v6.848a8.022 8.022 0 0 0 3.796-4.656l-3.796-2.192zm-7.993 6.68A7.963 7.963 0 0 0 10 18c.637 0 1.257-.074 1.85-.215v-4.4l-5.992 3.46zM10 20C4.477 20 0 15.523 0 10S4.477 0 10 0s10 4.477 10 10s-4.477 10-10 10z"/></svg>
+                                    <span class="nav-span">Animations</span>
+                                </div>
+                            </div>
+                        </ul>
+                        <ul class="nav-list">
+                            <div>
+                                <div class="nav-list-header-div">
+                                    <svg class="nav-list-icons" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 256 256"><path fill="white" d="M180 144h-20v-32h20a36 36 0 1 0-36-36v20h-32V76a36 36 0 1 0-36 36h20v32H76a36 36 0 1 0 36 36v-20h32v20a36 36 0 1 0 36-36Zm-20-68a20 20 0 1 1 20 20h-20ZM56 76a20 20 0 0 1 40 0v20H76a20 20 0 0 1-20-20Zm40 104a20 20 0 1 1-20-20h20Zm16-68h32v32h-32Zm68 88a20 20 0 0 1-20-20v-20h20a20 20 0 0 1 0 40Z"/></svg>
+                                    <span class="nav-span">Icons</span>
+                                    <i class="fa-solid fa-chevron-right fa-2xs chevron-down-i"></i>
+                                </div>
+                                <div class="iconsDropdown dropdown-list">
+                                    <li><a href="#"><i class="fa-solid fa-chevron-right fa-2xs"></i>Font Awesome</a></li>
+                                    <li><a href="#"><i class="fa-solid fa-chevron-right fa-2xs"></i>Themify</a></li>
+                                    <li><a  href="#"><i class="fa-solid fa-chevron-right fa-2xs"></i>Simple Line Icon</a></li>
+                                </div>
+                            </div>
+                        </ul>
+                    </div>
+                    <div class="formsDiv nav-titles">
+                        <div class="forms title-text">Forms</div>
+                        <ul class="nav-list">
+                            <div>
+                                <div class="nav-list-header-div">
+                                    <svg class="nav-list-icons" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24"><g fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><path d="M9 5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v0a2 2 0 0 1-2 2h-2a2 2 0 0 1-2-2z"/></g></svg>
+                                    <span class="nav-span">Form</span>
+                                    <i class="fa-solid fa-chevron-right fa-2xs chevron-down-i"></i>
+                                </div>
+                                <div class="formDropdown dropdown-list">
+                                    <li><a href="#"><i class="fa-solid fa-chevron-right fa-2xs"></i>Components</a></li>
+                                    <li><a href="#"><i class="fa-solid fa-chevron-right fa-2xs"></i>Add-On</a></li>
+                                    <li><a  href="#"><i class="fa-solid fa-chevron-right fa-2xs"></i>Advance</a></li>
+                                    <li><a href="#"><i class="fa-solid fa-chevron-right fa-2xs"></i>Validation</a></li>
+                                </div>
+                            </div>
+                        </ul>
+                        <ul class="nav-list">
+                            <div>
+                                <div class="nav-list-header-div">
+                                    <svg class="nav-list-icons" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24"><path fill="white" d="M6.414 15.89L16.556 5.748l-1.414-1.414L5 14.476v1.414h1.414Zm.829 2H3v-4.243L14.435 2.212a1 1 0 0 1 1.414 0l2.829 2.829a1 1 0 0 1 0 1.414L7.243 17.89ZM3 19.89h18v2H3v-2Z"/></svg>
+                                    <span class="nav-span">Form Picker</span>
+                                </div>
+                            </div>
+                        </ul>
+                        <ul class="nav-list">
+                            <div>
+                                <div class="nav-list-header-div">
+                                    <svg class="nav-list-icons" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24"><path fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5zM16 8L2 22m15.5-7H9"/></svg>
+                                    <span class="nav-span">Form Select</span>
+                                </div>
+                            </div>
+                        </ul>
+                        <ul class="nav-list">
+                            <div>
+                                <div class="nav-list-header-div">
+                                    <svg class="nav-list-icons" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24"><path fill="white" d="M12 22q-3.475-.875-5.738-3.988T4 11.1V5l8-3l8 3v6.1q0 3.8-2.263 6.913T12 22Zm0-2.1q2.6-.825 4.3-3.3t1.7-5.5V6.375l-6-2.25l-6 2.25V11.1q0 3.025 1.7 5.5t4.3 3.3Zm0-7.9Z"/></svg>
+                                    <span class="nav-span">Form Masking</span>
+                                </div>
+                            </div>
+                        </ul>
+                        <ul class="nav-list">
+                            <div>
+                                <div class="nav-list-header-div">
+                                    <svg class="nav-list-icons" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24"><g fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="20" height="15" x="2" y="7" rx="2" ry="2"/><path d="m17 2l-5 5l-5-5"/></g></svg>
+                                    <span class="nav-span">Form Wizard</span>
+                                </div>
+                            </div>
+                        </ul>
+                    </div>
+                    <div class="tablesDiv nav-titles">
+                        <div class="tables title-text">Tables</div>
+                        <ul class="nav-list">
+                            <div>
+                                <div class="nav-list-header-div">
+                                    <svg class="nav-list-icons" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24"><g fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="20" height="14" x="2" y="5" rx="2"/><path d="M2 10h20"/></g></svg>
+                                    <span class="nav-span">Bootstrap Table</span>
+                                    <i class="fa-solid fa-chevron-right fa-2xs chevron-down-i"></i>
+                                </div>
+                                <div class="bootstrapTableDropdown dropdown-list">
+                                    <li><a href="#"><i class="fa-solid fa-chevron-right fa-2xs"></i>Basic Table</a></li>
+                                    <li><a href="#"><i class="fa-solid fa-chevron-right fa-2xs"></i>Sizing Table</a></li>
+                                    <li><a  href="#"><i class="fa-solid fa-chevron-right fa-2xs"></i>Border Table</a></li>
+                                    <li><a href="#"><i class="fa-solid fa-chevron-right fa-2xs"></i>Styling Table</a></li>
+                                </div>
+                            </div>
+                        </ul>
+                        <ul class="nav-list">
+                            <div>
+                                <div class="nav-list-header-div">
+                                    <svg class="nav-list-icons" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24"><g fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M22 12h-6l-2 3h-4l-2-3H2"/><path d="M5.45 5.11L2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/></g></svg>
+                                    <span class="nav-span">Data Table</span>
+                                    <i class="fa-solid fa-chevron-right fa-2xs chevron-down-i"></i>
+                                </div>
+                                <div class="dataTableDropdown dropdown-list">
+                                    <li><a href="#"><i class="fa-solid fa-chevron-right fa-2xs"></i>Basic Initialization</a></li>
+                                    <li><a href="#"><i class="fa-solid fa-chevron-right fa-2xs"></i>Advance Initialization</a></li>
+                                    <li><a  href="#"><i class="fa-solid fa-chevron-right fa-2xs"></i>Styling</a></li>
+                                    <li><a href="#"><i class="fa-solid fa-chevron-right fa-2xs"></i>API</a></li>
+                                    <li><a href="#"><i class="fa-solid fa-chevron-right fa-2xs"></i>Ajax</a></li>
+                                    <li><a href="#"><i class="fa-solid fa-chevron-right fa-2xs"></i>Server Side</a></li>
+                                    <li><a  href="#"><i class="fa-solid fa-chevron-right fa-2xs"></i>Plug-In</a></li>
+                                    <li><a href="#"><i class="fa-solid fa-chevron-right fa-2xs"></i>Data Sources</a></li>
+                                </div>
+                            </div>
+                        </ul>
+                        <ul class="nav-list">
+                            <div>
+                                <div class="nav-list-header-div">
+                                    <svg class="nav-list-icons" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24"><g fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="20" height="8" x="2" y="2" rx="2" ry="2"/><rect width="20" height="8" x="2" y="14" rx="2" ry="2"/><path d="M6 6h.01M6 18h.01"/></g></svg>
+                                    <span class="nav-span">DT Extensions</span>
+                                    <i class="fa-solid fa-chevron-right fa-2xs chevron-down-i"></i>
+                                </div>
+                                <div class="DTExtensionsDropdown dropdown-list">
+                                    <li><a href="#"><i class="fa-solid fa-chevron-right fa-2xs"></i>AutoFill</a></li>
+                                    <li><a href="#"><i class="fa-solid fa-chevron-right fa-2xs"></i>Button</a></li>
+                                    <li><a  href="#"><i class="fa-solid fa-chevron-right fa-2xs"></i>Col Reorder</a></li>
+                                    <li><a href="#"><i class="fa-solid fa-chevron-right fa-2xs"></i>Fixed Columns</a></li>
+                                    <li><a href="#"><i class="fa-solid fa-chevron-right fa-2xs"></i>Fixed Header</a></li>
+                                    <li><a href="#"><i class="fa-solid fa-chevron-right fa-2xs"></i>Key Table</a></li>
+                                    <li><a href="#"><i class="fa-solid fa-chevron-right fa-2xs"></i>Responsive</a></li>
+                                    <li><a href="#"><i class="fa-solid fa-chevron-right fa-2xs"></i>Row Reorder</a></li>
+                                    <li><a  href="#"><i class="fa-solid fa-chevron-right fa-2xs"></i>Scroller</a></li>
+                                    <li><a href="#"><i class="fa-solid fa-chevron-right fa-2xs"></i>Select Table</a></li>
+                                </div>
+                            </div>
+                        </ul>
+                        <ul class="nav-list">
+                            <div>
+                                <div class="nav-list-header-div">
+                                    <svg class="nav-list-icons" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24"><path fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 9h14M5 15h14M11 4L7 20M17 4l-4 16"/></svg>
+                                    <span class="nav-span">FooTable</span>
+                                </div>
+                            </div>
+                        </ul>
+                        <ul class="nav-list">
+                            <div>
+                                <div class="nav-list-header-div">
+                                    <svg class="nav-list-icons" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24"><g fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M5 17H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-1"/><path d="m12 15l5 6H7l5-6z"/></g></svg>
+                                    <span class="nav-span">Handson Table</span>
+                                    <i class="fa-solid fa-chevron-right fa-2xs chevron-down-i"></i>
+                                </div>
+                                <div class="handsonTableDropdown dropdown-list">
+                                    <li><a href="#"><i class="fa-solid fa-chevron-right fa-2xs"></i>Appearance</a></li>
+                                    <li><a href="#"><i class="fa-solid fa-chevron-right fa-2xs"></i>Data Operation</a></li>
+                                    <li><a  href="#"><i class="fa-solid fa-chevron-right fa-2xs"></i>Rows Columns</a></li>
+                                    <li><a href="#"><i class="fa-solid fa-chevron-right fa-2xs"></i>Columns Only</a></li>
+                                    <li><a href="#"><i class="fa-solid fa-chevron-right fa-2xs"></i>CellFeatures</a></li>
+                                    <li><a href="#"><i class="fa-solid fa-chevron-right fa-2xs"></i>Cell Types</a></li>
+                                    <li><a href="#"><i class="fa-solid fa-chevron-right fa-2xs"></i>Integrations</a></li>
+                                    <li><a href="#"><i class="fa-solid fa-chevron-right fa-2xs"></i>Rows Only</a></li>
+                                    <li><a  href="#"><i class="fa-solid fa-chevron-right fa-2xs"></i>Utilities</a></li>
+                                    
+                                </div>
+                            </div>
+                        </ul>
+                        <ul class="nav-list">
+                            <div>
+                                <div class="nav-list-header-div">
+                                    <svg class="nav-list-icons" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24"><path fill="white" d="m7 17.013l4.413-.015l9.632-9.54c.378-.378.586-.88.586-1.414s-.208-1.036-.586-1.414l-1.586-1.586c-.756-.756-2.075-.752-2.825-.003L7 12.583v4.43zM18.045 4.458l1.589 1.583l-1.597 1.582l-1.586-1.585l1.594-1.58zM9 13.417l6.03-5.973l1.586 1.586l-6.029 5.971L9 15.006v-1.589z"/><path fill="white" d="M5 21h14c1.103 0 2-.897 2-2v-8.668l-2 2V19H8.158c-.026 0-.053.01-.079.01c-.033 0-.066-.009-.1-.01H5V5h6.847l2-2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2z"/></svg>
+                                    <span class="nav-span">Editable Table</span>
+                                </div>
+                            </div>
+                        </ul>
+                    </div>
+                    <div class="chartsAndMapsDiv nav-titles">
+                        <div class="charts title-text">Charts And Maps</div>
+                        <ul class="nav-list">
+                            <div>
+                                <div class="nav-list-header-div">
+                                    <svg class="nav-list-icons" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24"><path fill="white" d="M9 2.458v2.124A8.003 8.003 0 0 0 12 20a8.003 8.003 0 0 0 7.419-5h2.123c-1.274 4.057-5.064 7-9.542 7c-5.523 0-10-4.477-10-10c0-4.478 2.943-8.268 7-9.542ZM12 2c5.523 0 10 4.477 10 10c0 .338-.017.671-.05 1H11V2.05c.329-.033.662-.05 1-.05Zm1 2.062V11h6.938A8.004 8.004 0 0 0 13 4.062Z"/></svg>
+                                    <span class="nav-span">Charts</span>
+                                    <i class="fa-solid fa-chevron-right fa-2xs chevron-down-i"></i>
+                                </div>
+                                <div class="chartsDropdown dropdown-list">
+                                    <li><a href="#"><i class="fa-solid fa-chevron-right fa-2xs"></i>Google Chart</a></li>
+                                    <li><a href="#"><i class="fa-solid fa-chevron-right fa-2xs"></i>Chart Js</a></li>
+                                    <li><a  href="#"><i class="fa-solid fa-chevron-right fa-2xs"></i>List Chart</a></li>
+                                    <li><a href="#"><i class="fa-solid fa-chevron-right fa-2xs"></i>Float Chart</a></li>
+                                    <li><a href="#"><i class="fa-solid fa-chevron-right fa-2xs"></i>Knob chart</a></li>
+                                    <li><a  href="#"><i class="fa-solid fa-chevron-right fa-2xs"></i>Morris Chart</a></li>
+                                    <li><a href="#"><i class="fa-solid fa-chevron-right fa-2xs"></i>Nvd3 Chart</a></li>
+                                    <li><a href="#"><i class="fa-solid fa-chevron-right fa-2xs"></i>Peity Chart</a></li>
+                                    <li><a href="#"><i class="fa-solid fa-chevron-right fa-2xs"></i>Radial Chart</a></li>
+                                    <li><a href="#"><i class="fa-solid fa-chevron-right fa-2xs"></i>Rickshaw Chart</a></li>
+                                    <li><a href="#"><i class="fa-solid fa-chevron-right fa-2xs"></i>Sparkline Chart</a></li>
+                                    <li><a href="#"><i class="fa-solid fa-chevron-right fa-2xs"></i>C3 Chart</a></li>
+                                </div>
+                            </div>
+                        </ul>
+                        <ul class="nav-list">
+                            <div>
+                                <div class="nav-list-header-div">
+                                    <svg class="nav-list-icons" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24"><path fill="white" d="m20.5 3l-.16.03L15 5.1L9 3L3.36 4.9c-.21.07-.36.25-.36.48V20.5c0 .28.22.5.5.5l.16-.03L9 18.9l6 2.1l5.64-1.9c.21-.07.36-.25.36-.48V3.5c0-.28-.22-.5-.5-.5zM10 5.47l4 1.4v11.66l-4-1.4V5.47zm-5 .99l3-1.01v11.7l-3 1.16V6.46zm14 11.08l-3 1.01V6.86l3-1.16v11.84z"/></svg>
+                                    <span class="nav-span">Maps</span>
+                                    <i class="fa-solid fa-chevron-right fa-2xs chevron-down-i"></i>
+                                </div>
+                                <div class="mapsDropdown dropdown-list">
+                                    <li><a href="#"><i class="fa-solid fa-chevron-right fa-2xs"></i>Google Maps</a></li>
+                                    <li><a href="#"><i class="fa-solid fa-chevron-right fa-2xs"></i>Vector Maps</a></li>
+                                    <li><a  href="#"><i class="fa-solid fa-chevron-right fa-2xs"></i>google Map Search API</a></li>
+                                    <li><a href="#"><i class="fa-solid fa-chevron-right fa-2xs"></i>Location</a></li>
+                                </div>
+                            </div>
+                        </ul>
+                    </div>
+                    <div class="pagesDiv nav-titles">
+                        <div class="pages title-text">Pages</div>
+                        <ul class="nav-list">
+                            <div>
+                                <div class="nav-list-header-div">
+                                    <svg class="nav-list-icons" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24"><g fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 9.9-1"/></g></svg>
+                                    <span class="nav-span">Authentication</span>
+                                    <i class="fa-solid fa-chevron-right fa-2xs chevron-down-i"></i>
+                                </div>
+                                <div class="authenticationDropdown dropdown-list">
+                                    <li><a href="#"><i class="fa-solid fa-chevron-right fa-2xs"></i>Login</a></li>
+                                    <li><a href="#"><i class="fa-solid fa-chevron-right fa-2xs"></i>Registration</a></li>
+                                    <li><a  href="#"><i class="fa-solid fa-chevron-right fa-2xs"></i>forgot password</a></li>
+                                    <li><a href="#"><i class="fa-solid fa-chevron-right fa-2xs"></i>Lock Screen</a></li>
+                                </div>
+                            </div>
+                        </ul>
+                        <ul class="nav-list">
+                            <div>
+                                <div class="nav-list-header-div">
+                                    <svg class="nav-list-icons" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24"><path fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 21v-7m0-4V3m8 18v-9m0-4V3m8 18v-5m0-4V3M2 14h4m4-6h4m4 8h4"/></svg>
+                                    <span class="nav-span">Maintenance</span>
+                                    <i class="fa-solid fa-chevron-right fa-2xs chevron-down-i"></i>
+                                </div>
+                                <div class="maintenanceDropdown dropdown-list">
+                                    <li><a href="#"><i class="fa-solid fa-chevron-right fa-2xs"></i>Error</a></li>
+                                    <li><a href="#"><i class="fa-solid fa-chevron-right fa-2xs"></i>Comming Soon</a></li>
+                                    <li><a  href="#"><i class="fa-solid fa-chevron-right fa-2xs"></i>Offline UI</a></li>
+                                </div>
+                            </div>
+                        </ul>
+                        <ul class="nav-list">
+                            <div>
+                                <div class="nav-list-header-div">
+                                    <svg class="nav-list-icons" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24"><path fill="white" d="M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6zm-2 0l-8 5l-8-5h16zm0 12H4V8l8 5l8-5v10z"/></svg>
+                                    <span class="nav-span">Email</span>
+                                    <i class="fa-solid fa-chevron-right fa-2xs chevron-down-i"></i>
+                                </div>
+                                <div class="emailDropdown dropdown-list">
+                                    <li><a href="#"><i class="fa-solid fa-chevron-right fa-2xs"></i>Compose Email</a></li>
+                                    <li><a href="#"><i class="fa-solid fa-chevron-right fa-2xs"></i>Inbox</a></li>
+                                    <li><a  href="#"><i class="fa-solid fa-chevron-right fa-2xs"></i>Read Mail</a></li>
+                                </div>
+                            </div>
+                        </ul>
+                    </div>
+                    <div class="appDiv nav-titles">
+                        <div class="app title-text">App</div>
+                        <ul class="nav-list">
+                            <div>
+                                <div class="nav-list-header-div">
+                                    <svg class="nav-list-icons" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24"><g fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 9.9-1"/></g></svg>
+                                    <span class="nav-span">To-Do</span>
+                                </div>
+                            </div>
+                        </ul>
+                    </div>
+                    <div class="extensionDiv nav-titles">
+                        <div class="extension title-text">Extension</div>
+                        <ul class="nav-list">
+                            <div>
+                                <div class="nav-list-header-div">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24"><g fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><path d="M14 2v6h6m-8 10v-6m-3 3h6"/></g></svg>
+                                    <span class="nav-span">Editor</span>
+                                    <i class="fa-solid fa-chevron-right fa-2xs chevron-down-i"></i>
+                                </div>
+                                <div class="editorDropdown dropdown-list">
+                                    <li><a href="#"><i class="fa-solid fa-chevron-right fa-2xs"></i>CK-Editor</a></li>
+                                    <li><a href="#"><i class="fa-solid fa-chevron-right fa-2xs"></i>WYSIWYG Editor</a></li>
+                                </div>
+                            </div>
+                        </ul>
+                        <ul class="nav-list">
+                            <div>
+                                <div class="nav-list-header-div">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24"><path fill="white" d="M19 4h-2V3a1 1 0 0 0-2 0v1H9V3a1 1 0 0 0-2 0v1H5a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3Zm1 15a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-7h16Zm0-9H4V7a1 1 0 0 1 1-1h2v1a1 1 0 0 0 2 0V6h6v1a1 1 0 0 0 2 0V6h2a1 1 0 0 1 1 1Z"/></svg>
+                                    <span class="nav-span">Event Calender</span>
+                                    <i class="fa-solid fa-chevron-right fa-2xs chevron-down-i"></i>
+                                </div>
+                                <div class="eventCalenderDropdown dropdown-list">
+                                    <li><a href="#"><i class="fa-solid fa-chevron-right fa-2xs"></i>Full Calender</a></li>
+                                    <li><a href="#"><i class="fa-solid fa-chevron-right fa-2xs"></i>CLINDER</a></li>
+                                </div>
+                            </div>
+                        </ul>
+                        <ul class="nav-list">
+                            <div>
+                                <div class="nav-list-header-div">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24"><g fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="6" cy="6" r="3"/><path d="M8.12 8.12L12 12m8-8L8.12 15.88"/><circle cx="6" cy="18" r="3"/><path d="M14.8 14.8L20 20"/></g></svg>
+                                    <span class="nav-span">Image Cropper</span>
+                                </div>
+                            </div>
+                        </ul>
+                        <ul class="nav-list">
+                            <div>
+                                <div class="nav-list-header-div">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24"><g fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242M12 12v9"/><path d="m16 16l-4-4l-4 4"/></g></svg>
+                                    <span class="nav-span">File Upload</span>
+                                </div>
+                            </div>
+                        </ul>
+                        <ul class="nav-list">
+                            <div>
+                                <div class="nav-list-header-div">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24"><g fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><rect width="20" height="14" x="2" y="7" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></g></svg>
+                                    <span class="nav-span">Change Loges</span>
+                                </div>
+                            </div>
+                        </ul>
+                    </div>
+                    <div class="otherDiv nav-titles">
+                        <div class="other title-text">Other</div>
+                        <ul class="nav-list">
+                            <div>
+                                <div class="nav-list-header-div">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24"><path fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg>
+                                    <span class="nav-span">Menu Levels</span>
+                                    <i class="fa-solid fa-chevron-right fa-2xs chevron-down-i"></i>
+                                </div>
+                                <div class="menulevelsDropdown dropdown-list">
+                                    <li><a href="#"><i class="fa-solid fa-chevron-right fa-2xs"></i>Menu Level 2.1</a></li>
+                                    <li><a href="#"><i class="fa-solid fa-chevron-right fa-2xs"></i>Menu Level 2.2</a></li>
+                                    <li><a href="#"><i class="fa-solid fa-chevron-right fa-2xs"></i>Menu Level 2.3</a></li>
+                                </div>
+                            </div>
+                        </ul>
+                        <ul class="nav-list">
+                            <div>
+                                <div class="nav-list-header-div">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 512 512"><path fill="white" d="M256 464c-114.69 0-208-93.47-208-208.35c0-62.45 27.25-121 74.76-160.55a22 22 0 1 1 28.17 33.8C113.48 160.1 92 206.3 92 255.65C92 346.27 165.57 420 256 420s164-73.73 164-164.35A164 164 0 0 0 360.17 129a22 22 0 1 1 28-33.92A207.88 207.88 0 0 1 464 255.65C464 370.53 370.69 464 256 464Z"/><path fill="white" d="M256 272a22 22 0 0 1-22-22V70a22 22 0 0 1 44 0v180a22 22 0 0 1-22 22Z"/></svg>
+                                    <span class="nav-span">Disabled Menu</span>
+                                </div>
+                            </div>
+                        </ul>
+                        <ul class="nav-list">
+                            <div>
+                                <div class="nav-list-header-div">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24"><g fill="none" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M12 9v3l2 1m4-1a6 6 0 1 1-12 0a6 6 0 0 1 12 0z"/><path d="M15 6.5V3a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v3.5m6 11V21a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1v-3.5"/></g></svg>
+                                    <span class="nav-span">Sample Page</span>
+                                </div>
+                            </div>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- sidebar end -->
+
+            <div class="col-md-12 col-lg-10" id="lapcontent">
+                <div class="page">
+                    
+                    <!-- Home Dashboard start -->
+                    <div class="row home-dashboard-row">
+                        <div class="home-l col-lg-8 col-md-12">
+                            <div class="home-icon">
+                                <div class="home-icon-div">
+                                    <i id="houseIconLarge" class="fa-solid fa-house fa-lg"></i>
+                                </div>
+                            </div>
+                            <div class="dashboardtextDiv">
+                                <h5 id="dashboardText">Dashboard</h5>
+                                <span id="contentCardText">Lorem ipsum dolor sit amet, consectetur adipisicing elit</span>
+                            </div>
+                        </div>
+                        <div class="home_r col-md-12 col-lg-4">
+                            <div class="home-link">
+                                <i class="fa-solid fa-house fa-xs"></i>
+                                <span>/</span>
+                                <a id="home_rDashboardText" href="#">Dashboard</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Home Dashboard end -->
+
+                    <!-- chart row start -->
+                    <div class="row">
+                        <div class="col-xl-8 col-md-12" id="chartColumn">
+                            <div id="chartWrapDiv">
+                                <div class="chartHeader">
+                                    <h5 class="title-card-text">Deals Analytics</h5>
+                                    <hr class="title-card-line">
+                                </div>
+                                <div id="chartdiv"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-xl-4">
+                            <div class="impressions col-12">
+                                <div class="row">
+                                    <div class="col-8 col-sm-9 col-xl-9">
+                                        <h6 class="three-div-text">Impressions</h6>
+                                        <h3 class="three-div-count" id="impressionsCount">1,563</h3>
+                                        <p class="three-div-duration">May 23 - June 01 (2017)</p>
+                                    </div>
+                                    <div class="col-4 col-sm-3 col-xl-3" id="impressionsIconDiv">
+                                        <div>
+                                            <i id="impressionsIcon" class="fa-regular fa-eye"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="goal col-12">
+                                <div class="row">
+                                    <div class="col-8 col-sm-9 col-xl-9">
+                                        <h6 class="three-div-text">Goal</h6>
+                                        <h3 class="three-div-count" id="goalCount">30,564</h3>
+                                        <p class="three-div-duration">May 23 - June 01 (2017)</p>
+                                    </div>
+                                    <div class="col-4 col-sm-3 col-xl-3" id="goalIconDiv">
+                                        <div>
+                                            <i id="goalIcon" class="fa-solid fa-bullseye"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="impact col-12">
+                                <div class="row">
+                                    <div class="col-8 col-sm-9 col-xl-9">
+                                        <h6 class="three-div-text">Impact</h6>
+                                        <h3 class="three-div-count" id="impactCount">42.6%</h3>
+                                        <p class="three-div-duration">May 23 - June 01 (2017)</p>
+                                    </div>
+                                    <div class="col-4 col-sm-3 col-xl-3" id="imapactHandDiv">
+                                        <div>
+                                            <i class="fa-solid fa-hand fa-lg" id="impactHandIcon"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Chart row end -->
+
+                    <!-- Project Task start -->
+                    <div class="row" id="taskRow">
+                        <!-- <div class="projectdetails col-12" style="margin: 15px; background-color: #ffffff; border-radius: 5px;"> -->
+                        <div class="col-xl-3 col-md-6 col-sm-12 published">
+                            <h6>Published Task</h6>
+                            <h5 class="published-count">532<span class="published-count-percentage">+1.69%</span></h5>
+                            <div class="progress">
+                                <div id="publishedProgress" class="progress-bar"></div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-md-6 col-sm-12 completed">
+                            <h6>Completed Task</h6>
+                            <h5 class="completed-count">4,569<span class="completed-count-percentage">-0.5%</span></h5>
+                            <div class="progress">
+                                <div id="completedProgress" class="progress-bar"></div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-md-6 col-sm-12 successfull">
+                            <h6>Successfull Task</h6>
+                            <h5 class="success-count">89%<span class="success-count-percentage">+0.99%</span></h5>
+                            <div class="progress">
+                                <div id="successfullProgress" class="progress-bar"></div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-md-6 col-sm-12 ongoing">
+                            <h6>Ongoing Task</h6>                                
+                            <h5 class="ongoing-count">365<span class="ongoing-count-percentage">+0.35%</span></h5>
+                            <div class="progress">
+                                <div id="ongoingProgress" class="progress-bar"></div>
+                            </div>
+                        </div>
+                        <!-- </div> -->
+                    </div>
+                    <!-- Project Task end -->
+
+                    <!-- Three sales start -->
+                    <div class="row">
+                            <div class="col-xl-4 col-md-12 sales">
+                                <div class="sales-div">
+                                    <div class="row">
+                                        <div class="col salescard">
+                                            <div>
+                                                <p class="sales-card-type" id="julySales">Sales In July</p>
+                                                <h5 class="sales-card-amount">$2665.00</h5>
+                                            </div>
+                                        </div>
+                                        <div class="col-auto directsale">
+                                            <div>
+                                                <p class="sales-card-type">Direct Sale</p>
+                                                <h6 class="sales-card-amount">$1765</h6>
+                                            </div>
+                                        </div>
+                                        <div class="col-auto referal">
+                                            <div>
+                                                <p class="sales-card-type">Referal</p>
+                                                <h6 class="sales-card-amount">$897</h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" id="salesChartDiv">
+                                        <div id="amchartdiv"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-4 col-md-12 whatsnew">
+                                <div class="whats-div">
+                                    <div class="whats-new-header">
+                                        <h6>What's New</h6>
+                                        <hr class="whats-new-title-line">
+                                        <div class="chevron-left-div">
+                                            <i class="fa-solid fa-chevron-left fa-2xs"></i>
+                                        </div>
+                                    </div>
+                                    <div class="whatsnewbody">
+                                        <div class="whatsnew-content">
+                                            <div class="singlecontent">
+                                                <div id="whatsnewcontentRow_1" class="row">
+                                                    <div class="col-3">
+                                                        <div> <!-- style="background-color: #ffffff;width: 50px; height: 50px; border-radius: 50%; box-sizing:border-box; box-shadow: 0px 0px 6px #999 ;display: grid; place-items: center; justify-content: center;"> -->
+                                                            <i class="fa-solid fa-user-tie fa-2xl"></i>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-9 posted">
+                                                        <h6>Your Manager Posted.</h6>
+                                                        <p>Jonny michel</p>
+                                                    </div>
+                                                </div>
+                                                <div id="whatsnewcontentRow_2" class="row">
+                                                    <div class="col-3">
+                                                        <div>
+                                                            <i class="fa-solid fa-briefcase fa-2xl"></i>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-9 pending">
+                                                        <h6>You have 3 pending Task.</h6>
+                                                        <p>Hemilton</p>
+                                                    </div>
+                                                </div>
+                                                <div class="row" id="whatsnewcontentRow_3">
+                                                    <div class="col-3">
+                                                        <div>
+                                                            <i class="fa-solid fa-circle-check fa-2xl"></i>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-9 received">
+                                                        <h6>New order received.</h6>
+                                                        <p>Hemilton</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="singlecontent">
+                                                <div class="row" id="whatsnewcontentRow_4">
+                                                    <div class="col-3">
+                                                        <div>
+                                                            <i class="fa-solid fa-user-tie fa-2xl"></i>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-9 posted">
+                                                        <h6>Your Manager Posted.</h6>
+                                                        <p>Jonny michel</p>
+                                                    </div>
+                                                </div>
+                                                <div class="row" id="whatsnewcontentRow_5">
+                                                    <div class="col-3">
+                                                        <div>
+                                                            <i class="fa-solid fa-briefcase fa-2xl"></i>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-9 pending">
+                                                        <h6>You have 3 pending Task.</h6>
+                                                        <p>Hemilton</p>
+                                                    </div>
+                                                </div>
+                                                <div class="row" id="whatsnewcontentRow_6">
+                                                    <div class="col-3">
+                                                        <div>
+                                                            <i class="fa-solid fa-circle-check fa-2xl"></i>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-9 received">
+                                                        <h6>New order received.</h6>
+                                                        <p>Hemilton</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-4 col-md-6 latestactivity">
+                                <div class="activity-div">
+                                    <div class="latest-activity-header">
+                                        <h6>Latest Activity</h6>
+                                        <hr class="activity-title-line">
+                                        <div class="chevron-left-div">
+                                            <i class="fa-solid fa-chevron-left fa-2xs"></i>
+                                        </div>
+                                    </div>
+                                    <div class="latestactivitybody">
+                                        <div class="latest-activity-content">
+                                            <div class="row" class="activity-row" id="activityRow_1">
+                                                <div class="col-2">
+                                                    <div>
+                                                        <i class="fa-regular fa-circle fa-sm fa-circleBlue"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="col-10">
+                                                    <h6>Development & Update</h6>
+                                                    <p>Lorem ipsum donor sit amet, <a class="activityMoreText" href="#">More</a></p>
+                                                </div>
+                                            </div>
+                                            <div class="row" class="activity-row">
+                                                <div class="col-2">
+                                                    <div>
+                                                        <i class="fa-regular fa-circle fa-sm fa-circleBlue"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="col-10">
+                                                    <h6>Showcases</h6>
+                                                    <p>Lorem ipsum sit amet, <a class="activityMoreText" href="#">More</a></p>
+                                                </div>
+                                            </div>
+                                            <div class="row" class="activity-row">
+                                                <div class="col-2">
+                                                    <div>
+                                                        <i class="fa-regular fa-circle fa-sm fa-circleGreen"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="col-10">
+                                                    <h6>Miscellaneous</h6>
+                                                    <p>Lorem ipsum donor sit amet, <a class="activityMoreText fa-circleGreen" href="#">More</a></p>
+                                                </div>
+                                            </div>
+                                            <div class="row" class="activity-row">
+                                                <div class="col-2">
+                                                    <div>
+                                                        <i class="fa-regular fa-circle fa-sm fa-circleRed"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="col-10">
+                                                    <h6>Your Manager Posted</h6>
+                                                    <p>Lorem ipsum donor sit amet, <a class="activityMoreText fa-circleRed" href="#">More</a></p>
+                                                </div>
+                                            </div>
+                                            <div class="row" class="activity-row">
+                                                <div class="col-2">
+                                                    <div>
+                                                        <i class="fa-regular fa-circle fa-sm fa-circleBlue"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="col-10">
+                                                    <h6>Showcases</h6>
+                                                    <p>Lorem ipsum sit amet, <a class="activityMoreText" href="#">More</a></p>
+                                                </div>
+                                            </div>
+                                            <div class="row" class="activity-row">
+                                                <div class="col-2">
+                                                    <div>
+                                                        <i class="fa-regular fa-circle fa-sm fa-circleGreen"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="col-10">
+                                                    <h6>Miscellaneous</h6>
+                                                    <p>Lorem ipsum donor sit amet sit ipsium amet, <a class="activityMoreText fa-circleGreen" href="#">More</a></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                    <!-- Three sales end -->
+
+
+                    <!-- table start -->
+                    <div class="row" id="tableRow">
+                        <div class="products-table col">
+                            <div class="table-header">
+                                <h5 class="title-card-text">New Products</h5>
+                                <hr class="table-title-line">
+                                <div class="chevron-left-div">
+                                    <i class="fa-solid fa-chevron-left fa-2xs"></i>
+                                </div>
+                            </div>
+                            <div class="tablediv col-sm-12">
+                                <table class="col-sm-12">
+                                    <thead>
+                                        <tr>
+                                            <th class="remove-padding-start">Name</th>
+                                            <th>Product code</th>
+                                            <th>Customer</th>
+                                            <th>Status</th>
+                                            <th class="remove-padding-end">Rating</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="remove-padding-start">Sofa</td>
+                                            <td>#PHD001</td>
+                                            <td>abc@gmail.com</td>
+                                            <td><span class="text-light bg-danger stock">Out Stock</span></td>
+                                            <td class="remove-padding-end">
+                                                <a href="#"><i class="fa fa-star f-12 yellow-star"></i></a>
+                                                <a href="#"><i class="fa fa-star f-12 yellow-star"></i></a>
+                                                <a href="#"><i class="fa fa-star f-12 yellow-star"></i></a>
+                                                <a href="#"><i class="fa fa-star f-12 grey-star"></i></a>
+                                                <a href="#"><i class="fa fa-star f-12 grey-star"></i></a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="remove-padding-start">Computer</td>
+                                            <td>#PHD002</td>
+                                            <td>cdc@gmail.com</td>
+                                            <td><span class="text-light bg-success stock">In Stock</span></td>
+                                            <td class="remove-padding-end">
+                                                <a href="#"><i class="fa fa-star f-12 yellow-star"></i></a>
+                                                <a href="#"><i class="fa fa-star f-12 yellow-star"></i></a>
+                                                <a href="#"><i class="fa fa-star f-12 grey-star"></i></a>
+                                                <a href="#"><i class="fa fa-star f-12 grey-star"></i></a>
+                                                <a href="#"><i class="fa fa-star f-12 grey-star"></i></a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="remove-padding-start">Mobile</td>
+                                            <td>#PHD003</td>
+                                            <td>pqr@gmail.com</td>
+                                            <td><span class="text-light bg-danger stock">Out Stock</span></td>
+                                            <td class="remove-padding-end">
+                                                <a href="#"><i class="fa fa-star f-12 yellow-star"></i></a>
+                                                <a href="#"><i class="fa fa-star f-12 yellow-star"></i></a>
+                                                <a href="#"><i class="fa fa-star f-12 yellow-star"></i></a>
+                                                <a href="#"><i class="fa fa-star f-12 yellow-star"></i></a>
+                                                <a href="#"><i class="fa fa-star f-12 grey-star"></i></a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="remove-padding-start">Coat</td>
+                                            <td>#PHD004</td>
+                                            <td>bcs@gmail.com</td>
+                                            <td><span class="text-light bg-success stock">In Stock</span></td>
+                                            <td class="remove-padding-end">
+                                                <a href="#"><i class="fa fa-star f-12 yellow-star"></i></a>
+                                                <a href="#"><i class="fa fa-star f-12 yellow-star"></i></a>
+                                                <a href="#"><i class="fa fa-star f-12 yellow-star"></i></a>
+                                                <a href="#"><i class="fa fa-star f-12 grey-star"></i></a>
+                                                <a href="#"><i class="fa fa-star f-12 grey-star"></i></a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="remove-padding-start">Watch</td>
+                                            <td>#PHD005</td>
+                                            <td>cdc@gmail.com</td>
+                                            <td><span class="text-light bg-success stock">In Stock</span></td>
+                                            <td class="remove-padding-end">
+                                                <a href="#"><i class="fa fa-star f-12 yellow-star"></i></a>
+                                                <a href="#"><i class="fa fa-star f-12 yellow-star"></i></a>
+                                                <a href="#"><i class="fa fa-star f-12 grey-star"></i></a>
+                                                <a href="#"><i class="fa fa-star f-12 grey-star"></i></a>
+                                                <a href="#"><i class="fa fa-star f-12 grey-star"></i></a>
+                                            </td>
+                                        </tr>
+                                        <tr class="last-row">
+                                            <td class="remove-padding-start">Shoes</td>
+                                            <td>#PHD006</td>
+                                            <td>pqr@gmail.com</td>
+                                            <td><span class="text-light bg-danger stock">Out Stock</span></td>
+                                            <td class="remove-padding-end">
+                                                <a href="#"><i class="fa fa-star f-12 yellow-star"></i></a>
+                                                <a href="#"><i class="fa fa-star f-12 yellow-star"></i></a>
+                                                <a href="#"><i class="fa fa-star f-12 yellow-star"></i></a>
+                                                <a href="#"><i class="fa fa-star f-12 yellow-star"></i></a>
+                                                <a href="#"><i class="fa fa-star f-12 grey-star"></i></a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- table end -->
+                </div>
+            </div>
+        </div>
+
+        <!-- body-end -->
+    </div>
+    <script src="./scripts/script.js"></script>
+    <script src="./scripts/amchart.js"></script>
+    <script src="./scripts/amchart1.js"></script>
+</body>
+</html>
